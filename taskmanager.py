@@ -103,7 +103,8 @@ class BlockchainTest(object):
         while True:
             if not self.running:
                 break
-            self.new_transaction()
+            with self.mutex:
+                self.new_transaction()
 
 
     def new_transaction(self, node_index = None):
