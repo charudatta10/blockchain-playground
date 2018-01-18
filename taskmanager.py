@@ -70,14 +70,13 @@ class BlockchainTest(object):
         self.ts_worker.start()
 
     
-    def start_miners(self, sec_interval=6):
+    def start_miners(self, sec_interval=10):
         self.mining = True
         n = len(self.processes)
         self.miners = [
-            Thread(None, target=self.mine, name="Miner-%d"%i, args=(self.port_base+i, sec_interval + 3 * i))
+            Thread(None, target=self.mine, name="Miner-%d"%i, args=(self.port_base+i, sec_interval))
             for i in range(n)
         ]
-
         for t in self.miners:
             t.start()
 
@@ -87,14 +86,16 @@ class BlockchainTest(object):
 
 
     def mine(self, port, interval):
+        time.sleep(random.randint(0, interval))
         while True:
             if not self.running or not self.mining:
                 break
-            url = "http://localhost:%d/nodes/resolve"%port
-            response = requests.get(url)
-
-            url = "http://localhost:%d/mine"%port
-            response = requests.get(url)
+            try:
+                url = "http://localhost:%d/mine"%port
+                response = requests.get(url)
+            except:
+                pass
+            
             time.sleep(interval)
 
 
@@ -103,8 +104,15 @@ class BlockchainTest(object):
         while True:
             if not self.running:
                 break
-            with self.mutex:
-                self.new_transaction()
+            for _ in range(5):
+                with self.mutex:
+                    self.new_transaction()
+            try:
+                idx = random.randint(0, len(self.processes)-1)
+                url = "http://localhost:%d/nodes/resolve"%(self.port_base + idx)
+                response = requests.get(url)
+            except:
+                pass
 
 
     def new_transaction(self, node_index = None):
@@ -124,7 +132,7 @@ class BlockchainTest(object):
                 }), headers = headers)
 
             except Exception as e:
-                print e.message
+                pass
         
         self.global_increment += 1
 
@@ -157,9 +165,9 @@ class BlockchainTest(object):
                     print obj
 
             except Exception as e:
-                print e.message
+                pass
         
-        print "transaction loss:", 1.0 - (1.0 * (num_ts+1) / (max_ts_amount+1))
+        print "transaction loss:", max([0.0, 1.0 - (1.0 * (num_ts+1) / (max_ts_amount+1))])
 
 
 
