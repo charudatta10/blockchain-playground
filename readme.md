@@ -1,6 +1,6 @@
 BlockChain Playground
 ----------------------
-This is a tutorial repository for blockchain based app development.
+This is our tutorial repository for blockchain based app development.
 
 
 env:
@@ -9,12 +9,14 @@ env:
 * [Ethereum web3.js APIs](https://web3js.readthedocs.io/en/1.0/index.html)
 
 start rpc env in bash:
-    '''
-        testrpc
-    '''
+
+    ```
+        $testrpc
+    ```
 
 
 First tutorial:
+
     to be continue......
 
 
