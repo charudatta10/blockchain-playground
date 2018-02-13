@@ -10,15 +10,13 @@ env:
 
 start rpc env in bash:
 
-    ```
-        $testrpc
-    ```
-
+`$ testrpc`
 
 First tutorial:
 
-    [A quick overview](https://github.com/congxinUSC/Web3Study)
-    to be continue......
+[A quick overview](https://github.com/congxinUSC/Web3Study)
+
+to be continue......
 
 
 
