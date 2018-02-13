@@ -17,6 +17,7 @@ start rpc env in bash:
 
 First tutorial:
 
+    [A quick overview](https://github.com/congxinUSC/Web3Study)
     to be continue......
 
 
