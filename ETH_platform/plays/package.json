@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cryptico": "^1.0.2",
+    "crypto-js": "^3.1.4",
+    "ethereumjs-testrpc": "^6.0.3",
+    "express": "^4.16.2",
+    "package.json": "^2.0.1",
+    "solc": "^0.4.19",
+    "web3": "^1.0.0-beta.29"
+  },
+  "devDependencies": {}
+}
