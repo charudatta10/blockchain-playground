@@ -18,29 +18,19 @@ web3.eth.getAccounts(function(err, result){
             from: web3.eth.defaultAccount, 
             gas: 1500000,
             gasPrice: '100'}).then(function(newContractInstance){
-                // console.log(newContractInstance);
-                // myContract = newContractInstance;
-                newContractInstance.setProvider(web3.currentProvider);
+
                 newContractInstance.methods.setRecord("Hello Word").send({
                     from: web3.eth.defaultAccount,
                     gas: 1500000,
                     gasPrice: '100'
                 }).on('transactionHash', function(hash){
                     console.log('hash' + hash);
-                    // web3.eth.getTransactionReceipt(hash, function(err, receipt) {
-                    //     console.log(receipt);
-                    //      // newContractInstance.events.Record(function(err, result) {
-                    //     //     console.log(result);
-                    //     // });
-                    //     // web3.eth.getTransaction(result, function(err, result) {
-                    //     //     console.log(result);
-                    //     //     var recordEvent = result.events;
-                    //     //     console.log(recordEvent);
-                    //     // });
-                    // });
                 }).on('confirmation', function(number, receipt) {
-                    console.log(number);
-                    console.log(receipt);
+
+                    newContractInstance.methods.getRecord().call().then(function(result){
+                        console.log(result);
+                    });
+                    
                 }).on('error', console.error);
 
         });

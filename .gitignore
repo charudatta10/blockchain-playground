@@ -1,2 +1,4 @@
 *.pyc
-ETH_platform/tutorials/node_modules/*
+ETH_platform/examples/package-lock.json
+ETH_platform/examples/node_modules/
+ETH_platform/examples/node_modules/*

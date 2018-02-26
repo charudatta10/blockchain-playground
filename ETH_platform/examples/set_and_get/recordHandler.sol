@@ -1,10 +1,13 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.20;
+
 
 contract RecordHandler {
+
     address creator;
     string record;
 
-    event Record (string indexed record);
+    // !!!don't add indexed argument on string and bytes type
+    event Record (string record); 
     
     function RecordHandler() public {
         creator = msg.sender;
@@ -12,9 +15,9 @@ contract RecordHandler {
     
     function setRecord(string _record) public {
         record = _record;
-        Record(_record);
+        Record(record);
     }
-    
+
     function getRecord() public returns (string) {
         return record;
     }
