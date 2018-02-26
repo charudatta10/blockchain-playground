@@ -16,7 +16,7 @@ First tutorial:
 
 [A quick overview](https://github.com/congxinUSC/Web3Study)
 
-[Basic Value Setting and Getting](https://github.com/stormouse/blockchain-playground/tree/master/ETH_platform/plays/set_and_get)
+[Basic Value Setting and Getting](https://github.com/stormouse/blockchain-playground/tree/master/ETH_platform/examples/set_and_get)
 
 to be continue......
 
